@@ -1,0 +1,28 @@
+<h1>Addresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>SiteName</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.siteName %></td>
+        <td><%= link_to 'Show', location_address_path(@location, address) %></td>
+        <td><%= link_to 'Edit', edit_location_address_path(@location, address) %></td>
+        <td><%= link_to 'Destroy', location_address_path(@location, address), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address', new_location_address_path(@location) %>

@@ -1,0 +1,22 @@
+<p>
+  <strong>Date:</strong>
+  <%= @receipt.receiptDate %>
+</p>
+
+<p>
+  <strong>Payee:</strong>
+  <%= @receipt.payee %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @receipt.amount %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @receipt.category %>
+</p>
+
+<%= link_to 'Edit', edit_trip_receipt_path(@trip, @receipt) %> |
+<%= link_to 'Back', trip_receipt_path(@trip) %>

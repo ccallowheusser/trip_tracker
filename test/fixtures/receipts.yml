@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receiptDate: 
+  location,: MyString
+  payee,: MyString
+  amount: 
+  memo,: MyString
+  category,: MyString
+  reimbursable: false
+
+two:
+  receiptDate: 
+  location,: MyString
+  payee,: MyString
+  amount: 
+  memo,: MyString
+  category,: MyString
+  reimbursable: false

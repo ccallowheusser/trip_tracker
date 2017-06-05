@@ -1,0 +1,29 @@
+<h1>Receipts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Payee</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @receipts.each do |receipt| %>
+      <tr>
+        <td><%= receipt.payee %></td>
+        <td><%= receipt.receiptDate %></td>
+        <td><%= link_to 'Show', trip_receipt_path(@trip, receipt) %></td>
+        <td><%= link_to 'Edit', edit_trip_receipt_path(@trip, receipt) %></td>
+        <td><%= link_to 'Destroy', trip_receipt_path(@trip, receipt), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location', new_trip_location_path(@trip) %>

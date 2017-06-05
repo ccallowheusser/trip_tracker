@@ -1,0 +1,13 @@
+<p>
+  <strong>Address:</strong>
+  <%= @address.siteName %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @location.locationName %>
+</p>
+
+
+<%= link_to 'Edit', edit_trip_location_address_path(@trip, @location) %> |
+<%= link_to 'Back', trip_location_path(@trip) %>

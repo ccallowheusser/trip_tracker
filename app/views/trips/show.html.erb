@@ -1,0 +1,31 @@
+<h1>
+  <%= @trip.name %>
+</h1>
+
+<% if @locations.any? %>
+  <div class="row">
+    <% @locations.each do |loc| %>
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title"><%= loc.locationName %></span>
+            <p>Location: loc.locationName</p>
+            <p>Departure Date: loc.departDate</p>
+          </div>
+          <div class="card-action">
+            <%= link_to 'Go To Location', location_path(loc) %>
+            <%= link_to 'Remove From Trip', location_path(@trip, loc), method: :delete %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h3>No locations on trip. Please add one.</h3>
+<% end %>
+
+<div class='center'>
+  <%= link_to 'Add Location', new_trip_path %> |
+  <%= link_to 'Edit Trip', edit_trip_path(@trip) %> |
+  <%= link_to 'Back', trips_path %>
+</div>

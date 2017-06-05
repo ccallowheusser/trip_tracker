@@ -1,0 +1,12 @@
+<h1>Add A Location To Trip: <%= @trip.name %> </h1>
+
+<ul>
+	<% @locations.each do |loc| %>
+	  <li>
+	    <%= link_to loc.info, add_trip_location_path(@trip, loc), method: :post %>
+	  </li>
+	  <hr />
+	<% end %>
+</ul>
+
+<%= link_to 'Back', trips_path, class: 'btn grey' %>

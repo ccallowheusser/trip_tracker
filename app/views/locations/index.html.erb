@@ -1,0 +1,34 @@
+<h1>Locations</h1>
+
+<% if @locations.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Arrival Date</th>
+        <th></th>
+        <th></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td><%= location.locationName %></td>
+          <td><%= location.arriveDate %></td>
+          <td><%= link_to 'Show', trip_location_path(@trip, location) %></td>
+          <td><%= link_to 'Edit', edit_trip_location_path(@trip, location) %></td>
+          <td><%= link_to 'Destroy', trip_location_path(@trip, location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <h3>No locations found. Please create one!</h3>
+<% end %>
+
+  <br>
+
+<%= link_to 'Add Location', new_trip_location_path(@trip, params['trip_id']) %>
