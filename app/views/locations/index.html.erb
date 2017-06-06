@@ -4,7 +4,7 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Location</th>
         <th>Arrival Date</th>
         <th></th>
         <th></th>
@@ -16,10 +16,12 @@
       <% @locations.each do |location| %>
         <tr>
           <td><%= location.locationName %></td>
-          <td><%= location.arriveDate %></td>
-          <td><%= link_to 'Show', trip_location_path(@trip, location) %></td>
-          <td><%= link_to 'Edit', edit_trip_location_path(@trip, location) %></td>
-          <td><%= link_to 'Destroy', trip_location_path(@trip, location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= location.arriveDate.strftime("%a %b %d %Y") %></td>
+ <!--          <td><%= link_to 'Show', location_path(:trip_id, location) %></td>
+          <td><%= link_to 'Edit', edit_trip_location_path(:trip_id, location) %></td> -->
+         <td><%= link_to 'Add Address', new_location_address_path(location) %></td> 
+         <td><%= link_to 'Edit Location', edit_location_path(location) %></td>
+         <td><%= link_to 'Delete Location', location_path(location), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -31,4 +33,4 @@
 
   <br>
 
-<%= link_to 'Add Location', new_trip_location_path(@trip, params['trip_id']) %>
+<%= link_to 'Back to Trips', root_path %>

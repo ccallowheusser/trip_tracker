@@ -5,9 +5,12 @@
 
 <p>
   <strong>Arrival Date:</strong>
-  <%= @location.arriveDate %>
+  <%= @location.arriveDate.strftime("%a %b %d %Y") %>
 </p>
 
-
 <%= link_to 'Edit', edit_trip_location_path(@trip, @location) %> |
-<%= link_to 'Back', trip_location_path(@trip) %>
+<%= link_to 'Back', trip_location_path(@trip, @location) %>
+<br />
+<br />
+<%= link_to 'Delete',  trip_location_path(@trip, @location), method: :delete %>
+

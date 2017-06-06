@@ -1,6 +1,6 @@
 <h1>Editing Location</h1>
 
-<%= render 'form', location: @location %>
+<%= render 'form', location: @location, trip: @trip %>
 
-<%= link_to 'Show', trip_location_path(@trip, @location) %> |
-<%= link_to 'Back', trip_locations_path(@trip) %>
+<%= link_to 'Show', locations_path(@location) %> |
+<%= link_to 'Back', locations_path(@location) %>

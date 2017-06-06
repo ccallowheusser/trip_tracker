@@ -22,7 +22,7 @@ class TripsController < ApplicationController
 
   	if @trip.save
   		redirect_to @trip
-  	else
+    else
   		render :new
   	end
   end
@@ -38,36 +38,38 @@ class TripsController < ApplicationController
 
   def destroy
     @trip.destroy
-    redirect_to trip_path
+    redirect_to root_path
   end
 
-  def new_location
-     @locations = Location.all.where(trip_id: nil)
-  end
+  # def new_location
+  #   binding.pry
+  #   @location = Location.
+  #    @trip.locations = Location.new
+  # end
 
-  def add_location
-    @trip.locations << Location.new
-    redirect_to trip_path(@trip)
-  end
+  # def add_location
+  #   @trip.locations << Location.new
+  #   redirect_to trip_path(@trip)
+  # end
 
-  def remove_location
-     Location.find(params['id']).update(trip_id: nil)
-    redirect_to trip_path(@trip)
-  end
+  # def remove_location
+  #    Location.find(params['id']).update(trip_id: nil)
+  #   redirect_to trip_path(@trip)
+  # end
 
-  def new_receipt
-     @receipts = Receipt.all.where(trip_id: nil)
-  end
+  # def new_receipt
+  #    @receipts = Receipt.all.where(trip_id: nil)
+  # end
 
-  def add_receipt
-    @trip.receipts << Receipt.find(params['id'])
-    redirect_to trip_path(@trip)
-  end
+  # def add_receipt
+  #   @trip.receipts << Receipt.find(params['id'])
+  #   redirect_to trip_path(@trip)
+  # end
 
-  def remove_receipt
-     Location.find(params['id']).update(trip_id: nil)
-    redirect_to trip_path(@trip)
-  end
+  # def remove_receipt
+  #    Location.find(params['id']).update(trip_id: nil)
+  #   redirect_to trip_path(@trip)
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

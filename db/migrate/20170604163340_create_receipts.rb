@@ -9,8 +9,8 @@ class CreateReceipts < ActiveRecord::Migration[5.1]
       t.string :category
       t.boolean :reimbursable
 
-      t.belongs_to :trip
-      
+      t.belongs_to :trip, foreign_key: true
+
       t.timestamps
     end
   end

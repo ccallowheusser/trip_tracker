@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  before_action :set_trip, except: [:update, :edit, :index, :show, :destroy]
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   #before_action :set_address
  
@@ -10,20 +11,20 @@ class LocationsController < ApplicationController
   end
 
   def new
-  	@locations = Location.new
+  	@location = Location.new
   end
 
   def edit
   end
 
-  def create
-  	@location = Location.new(location_params)
+def create
+      @location = @trip.locations.new(location_params)
 
-  	if @location.save
-  		redirect_to @location
-  	else
-  		render :new
-  	end
+    if @location.save
+      redirect_to trip_locations_path(@trip)
+    else
+      render :new
+    end
   end
 
   def update
@@ -34,30 +35,42 @@ class LocationsController < ApplicationController
     end
   end
 
+
   def destroy
     @location.destroy
-    redirect_to location_url
+    redirect_to locations_path
   end
 
-  def new_address
-    @addresses = Address.all.where(location_id: nil)
-  end
+  # def new_address
+  #   @addresses = Address.all.where(location_id: nil)
+  # end
 
-  def add_address
-    @location.addresses << Address.find(params[:address_id])
-    redirect_to address_path(@address)
-  end
+  # def add_address
+  #   @location.addresses << Address.find(params[:address_id])
+  #   redirect_to address_path(@address)
+  # end
 
-  def remove_address
-    Address.find(params[:address_id]).update(location_id: nil)
-    redirect_to location_path(@location)
-  end
+  # def remove_address
+  #   Address.find(params[:address_id]).update(location_id: nil)
+  #   redirect_to location_path(@location)
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_location
-      @location = Location.find(params[:id])
+      if @trip
+        @location = @trip.locations.find(params['id'])
+      else
+        @location = Location.find(params['id'])
+      end
     end
+
+    def set_trip
+       @trip = Trip.find(params['trip_id'])
+       if @trip == nil
+          @trip = Trip.find(params['id'])
+       end 
+     end
 
     #def set_address
       #@address = Address.find(params[:address_id])
